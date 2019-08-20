@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light myShadow">
+<div class="container">
+  <a class="navbar-brand" href="/">    
+    <img src="./assets/hiringadda logo.png" class="d-inline-block align-top" alt="hiring adda logo">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']"><b>Log In</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/signup']"><b>Sign Up</b></a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+<section id="intro">
+  <div class="intro-container">
+    <p class="mb-4 pb-0">Are you ready for a perfect</p>
+    <h1 class="mb-4 pb-0">Hiring Meetup?</h1>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="margin-top: 5vh;">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid" src="./assets/meeting-image1.png" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h3 class="display-4 colorLayer"><b>For Companies</b></h3>
+          <p>Signup as an admin and set the hiring meetup with hundreds of users.</p>
+          <a [routerLink]="['/signup']" class="btn btn-xl">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <img class="img-fluid" src="./assets/meeting-image2.png" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <h3 class="display-4 colorLayer"><b>For Students</b></h3>
+          <p>Signup as a user and get meetings with companies. Also get live meeting reminders to never miss out on meetings.</p>
+          <a [routerLink]="['/signup']" class="btn btn-xl">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-5" style="background-color: #e3e2e4">
+    <div class="container">
+      <p class="small">Copyright &copy; hiringadda.online 2019</p>
+    </div>
+</footer>

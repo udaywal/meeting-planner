@@ -1,0 +1,157 @@
+<!-- Header Screen -->
+
+<nav class="navbar navbar-expand-md navbar-light bg-light myShadow">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="./assets/hiringadda logo.png" class="d-inline-block align-top" alt="hiring adda logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <button class="btn btn-xl btn-block" type="button" (click)="logout()"><b>Sign Out</b></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Screen -->
+
+<div class="container" style="text-align:center;">
+
+  <div class="row text-center marginStyle">
+
+    <div class="col-md-4 text-center">
+      <div>
+        <h4>Welcome {{activeUserName | titlecase}} (admin)</h4>
+      </div>
+    </div>
+
+    <div class="col-md-8 text-center">
+      <div class="row">
+        <div class="col-md-4 calender-nav">
+          <div class="btn-group">
+            <div class="btn btn-secondary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()">
+              <
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+              Today
+            </div>
+            <div class="btn btn-secondary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()">
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div>
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div class="btn btn-secondary" (click)="setView(CalendarView.Month)"
+              [class.active]="view === CalendarView.Month">
+              Month
+            </div>
+            <div class="btn btn-secondary" (click)="setView(CalendarView.Week)"
+              [class.active]="view === CalendarView.Week">
+              Week
+            </div>
+            <div class="btn btn-secondary" (click)="setView(CalendarView.Day)"
+              [class.active]="view === CalendarView.Day">
+              Day
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- 1st row -->
+
+  <!-- Calender Part -->
+
+  <div class="row marginStyle">
+
+    <div class="col-md-4">
+      <div>
+        <h4>All Users List</h4>
+      </div>
+      <br>
+      <div class="list-group" id="myList">
+        <a class="list-group-item" *ngFor="let user of userList" (click)="getMeetingsOfUser(user)"
+          style="cursor: pointer; height: 100%; overflow: auto;">{{user.firstName | titlecase}}
+          {{user.lastName | titlecase}}         
+          <span *ngIf="user.isAdmin"><i class="fas fa-user-tie"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-6">
+          <h4 *ngIf="selectedUser!= null"><span class="colorLayer"> {{selectedUser.firstName | titlecase}}'s Meetings
+            </span></h4>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-xl" (click)="createNewMeeting()">Create Meeting</button>
+        </div>
+      </div>
+      <br>
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+          (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+      </div>
+    </div>
+  </div> <!-- 2nd row -->
+
+</div>
+
+<!-- Footer Screen -->
+
+<footer class="py-5" style="background-color: #e3e2e4">
+    <div class="container">
+      <p class="small">Copyright &copy; hiringadda.online 2019</p>
+    </div>
+  </footer>
+
+<!-- Modal Screen -->
+
+<ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h5 class="modal-title ">Meeting Schedule</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <b>Meeting Name :</b>
+      <p>{{ modalData?.event.title }}</p>
+      <b>Starts At :</b>
+      <p>{{ modalData?.event.start| date:'medium'}}</p>
+      <b>Ends At :</b>
+      <p>{{modalData?.event.end| date:'medium'}}</p>
+      <b>Venue :</b>
+      <p>{{modalData?.event.venue}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteMeeting(modalData?.event);close()">Delete</button>
+      <button type="button" class="btn btn-outline-secondary"
+        (click)="updateMeeting(modalData?.event);close()">Update</button>
+    </div>
+  </ng-template>

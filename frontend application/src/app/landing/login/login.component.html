@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light myShadow">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="./assets/hiringadda logo.png" class="d-inline-block align-top" alt="hiring adda logo">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/signup']"><b>Sign Up</b></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="row p-0 m-0">
+  <div class="col-sm"></div>
+
+  <div class="col-sm p-5">
+
+    <h2 class="form-signin-heading">Your meetings are waiting! :)</h2>
+
+    <span>Email: </span>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required autofocus>
+    <br>
+    <span>Password: </span>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password" required>
+    <br>
+
+    <button class="btn btn-lg btn-xl btn-block" type="button" (click)="loginFunction()">Sign in</button>
+    <br>
+    <div class="text-center">
+      <a class="small" [routerLink]="['/forgotpassword']">
+        <span class="colorLayer">Forgot password?</span>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="col-sm"></div>
+
+</div>
+
+<footer class="py-5" style="background-color: #e3e2e4">
+    <div class="container">
+      <p class="small">Copyright &copy; hiringadda.online 2019</p>
+    </div>
+  </footer>

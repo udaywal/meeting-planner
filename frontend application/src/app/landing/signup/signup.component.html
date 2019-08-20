@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light myShadow">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="./assets/hiringadda logo.png" class="d-inline-block align-top" alt="hiring adda logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']"><b>Log In</b></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row p-0 m-0">
+
+  <div class="col-sm"></div>
+
+  <div class="col-sm p-5">
+
+    <h2 class="form-signin-heading">Setup a <span class="colorLayer">hiring meetup!</span> Signup now!</h2>
+    <br>
+
+    <span>first name: </span>
+    <label for="inputFirstName" class="sr-only">FirstName</label>
+    <input type="text" id="inputFirstName" class="form-control" [(ngModel)]="firstName" placeholder="FirstName" required
+      autofocus>
+    <br>
+    <span>last name: </span>
+    <label for="inputLastName" class="sr-only">LastName</label>
+    <input type="text" id="inputLastName" class="form-control" [(ngModel)]="lastName" placeholder="LastName" required>
+    <br>
+    <span>email: </span>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email" placeholder="Email address" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <br>
+    <span>Country: </span>
+    <label>Select Country</label>
+    <select name="country" id="inputCountry" class="form-control" [(ngModel)]="selectCountry"
+      (change)="onCountryChange()">
+      <option *ngFor="let country of countryList" [value]="country.code">{{country.name}}</option>
+    </select>
+    <br>
+    <label>mobile</label>
+    <div class="input-group">
+      <div class="input-group-text">+{{countryCode}}</div>
+      <input type="number" pattern="^\d{10}$" min="10" name="mobile" id="inputMobile" class="form-control"
+        [(ngModel)]="mobile" placeholder="Mobile" required>
+    </div>
+    <br>
+    <span>password: </span>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" placeholder="Password"
+      required>
+    <br>
+
+    <div class="input-group">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="inputAdmin" name="isAdmin" [(ngModel)]="isAdmin"
+            (change)="setUserName(isAdmin?'true':'false')"> Signup as an Admin! :)
+        </label>
+      </div>
+    </div>
+
+    <br>
+    <button class="btn btn-lg btn-xl btn-block" type="button" (click)="signupFunction()">Sign Up</button>
+  </div>
+
+  <div class="col-sm"></div>
+
+</div>
+
+<footer class="py-5" style="background-color: #e3e2e4">
+    <div class="container">
+      <p class="small">Copyright &copy; hiringadda.online 2019</p>
+    </div>
+  </footer>

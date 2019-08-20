@@ -1,0 +1,10 @@
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.fas {
+    color: #5206b6;
+}

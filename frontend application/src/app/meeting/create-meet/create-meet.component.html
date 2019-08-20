@@ -1,0 +1,113 @@
+<!-- Header Screen -->
+
+<nav class="navbar navbar-expand-md navbar-light bg-light myShadow">
+  <div class="container">
+    <a class="navbar-brand">
+      <img src="./assets/hiringadda logo.png" class="d-inline-block align-top" alt="hiring adda logo">
+    </a>
+  </div>
+</nav>
+
+<!-- Meeting Form -->
+
+<div class="container">
+
+  <div class="row p-0 m-0">
+
+    <div class="col-sm"></div>
+
+    <div class="col-sm p-5">
+
+      <div class="row colorLayer">
+        <h2> Schedule a new meeting! </h2>
+      </div>
+      <br>
+
+      <form>
+
+        <div class="form-group">
+          <label for="title">Meeting Title:</label>
+          <input type="text" class="form-control" name="title" id="title" [(ngModel)]="meetingName" placeholder="Title"
+            required autofocus>
+        </div>
+
+        <div class="form-group">
+          <label for="inviteeName">Meeting Invitee:</label>
+          <input type="text" class="form-control" name="inviteeName" id="inviteeName" [(ngModel)]="inviteeName"
+            placeholder="Search For User">
+          <div class="people-list">
+            <div class="card my-card" id="card-design" *ngFor="let user of userList | filterBy : inviteeName">
+              <div class="card-body p-2" (click)="selectedUser(user)" style="cursor: pointer;">
+                <span class="d-block font-adjust-heading">{{user.firstName}} {{user.lastName}}</span>
+                <span class="d-block font-adjust-heading">{{user.email}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inviterName">Meeting Inviter:</label>
+          <input type="text" class="form-control" name="inviterName" id="inviterName" [(ngModel)]="inviterName" required
+            readonly>
+        </div>
+
+        <div class="form-row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="startTime">
+                Meeting Start Date:
+              </label>
+              <input [owlDateTime]="dt1" name="startDate1" [(ngModel)]="meetingStartTime"
+                placeholder="8/18/2019, 11:00 AM">
+              <span [owlDateTimeTrigger]="dt1">
+                  <i class="fas fa-calendar-alt"></i>
+              </span>
+              <owl-date-time #dt1></owl-date-time>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="endTime">
+                Meeting End Date:
+              </label>
+              <input [owlDateTime]="dt2" name="endDate1" [(ngModel)]="meetingEndTime" placeholder="8/18/2019, 1:00 PM">
+              <span [owlDateTimeTrigger]="dt2">
+                  <i class="fas fa-calendar-alt"></i>
+              </span>
+              <owl-date-time #dt2></owl-date-time>
+            </div>
+          </div>
+
+          <div [hidden] *ngIf="validateDate(meetingStartTime,meetingEndTime)" class="alert alert-danger">
+            ** End Time is before Start Time. Please Check!!
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="place">Meeting Place:</label>
+          <input type="text" class="form-control" name="place" id="place" [(ngModel)]="meetingVenue" required>
+        </div>
+
+        <button type="submit" class="btn btn-xl" (click)="createMeeting()">Create</button>
+        <button type="button" style="float:right" class="btn btn-xl" (click)="goToAdminDashboard()">Back</button>
+
+      </form>
+
+    </div>
+
+    <div class="col-sm"></div>
+
+  </div>
+
+</div>
+
+<!-- Footer Screen -->
+
+<footer class="py-5" style="background-color: #e3e2e4">
+    <div class="container">
+      <p class="small">Copyright &copy; hiringadda.online 2019</p>
+    </div>
+  </footer>

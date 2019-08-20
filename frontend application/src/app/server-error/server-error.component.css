@@ -1,0 +1,21 @@
+.btn-xl {
+    text-transform: uppercase;
+    padding: .8rem 1.6rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    border-radius: 5rem;
+    background-color: #7c2ae8;
+    color: white;
+  }
+
+.btn-xl:hover {
+    text-transform: uppercase;
+    padding: .8rem 1.6rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    border-radius: 5rem;
+    background-color: #5206b6;
+    color: white;
+  }

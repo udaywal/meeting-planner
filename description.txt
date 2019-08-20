@@ -1,0 +1,34 @@
+HirignAdda.online - a hiring meetup scheduling system!
+
+> Project details - 
+
+web url: hiringadda.online
+backend url: api.hiringadda.online/
+api documentaiton: apidoc.hiringadda.online
+application developer: Vaibhav Udaywal
+technologies used: frontend> angular
+		   backend> nodeJs + express
+		   database> mongodb
+github repo: https://github.com/udaywal/hiringadda.git (both frontend+backend)
+
+> Project decription - 
+
+hiringadda.online is a simple meeting planner, more specifically a hiring meeting scheduling system which has some good features to help creating a prefecting hiring meetup.
+hiringadda.online delivers a good user experience with its minimal theming and call to action all over the platform.
+
+> Project features -
+
+Basically, company signs up as 'admin' and student signs up as 'user'. Whenever company needs to take interview of user. They simply schedule a meetup.
+
+Admin and user both has seperate dashboard to access the features.
+Admin has power to create, update or delete a hiring meetup whether user can view all the action perform by admin.
+
+Additionally, it's not just about creating the meetup but it also about how we cares the user. hiringadda.online understand this how a meeting can be important from user perspective. So it has the feature to get you informed whenever there is any action taken by admin. 
+On keep these things in note hiringadda.online has meeting
+User get email whenever there is meeting created, updated or deleted by admin. So with this, you don't have to login your app frequently to get updated.
+
+Application also has most of all basic features like reseting password, error handling etc.
+
+
+
+
